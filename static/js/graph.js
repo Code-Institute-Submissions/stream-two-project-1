@@ -9,15 +9,13 @@ function makeGraphs(error, projectsJson) {
    var dateFormat = d3.time.format("%m/%e/%y %H:%M");
    transactionsJaProjects.forEach(function (d) {
        d["Transaction_date"] = dateFormat.parse(d["Transaction_date"]);
-       // d["Transaction_date"].setDate(1);
        d["Price"] = +d["Price"];
    });
 
-
-   //Create a Crossfilter instance
+    //Create a Crossfilter instance
    var ndx = crossfilter(transactionsJaProjects);
 
-   //Define Dimensions
+    //Define Dimensions
    var dateDim = ndx.dimension(function (d) {
        return d["Transaction_date"];
    });
@@ -30,7 +28,6 @@ function makeGraphs(error, projectsJson) {
        return d["Country"];
    });
 
-
    //Calculate metrics
    var numProjectsByDate = dateDim.group();
    var numProjectSalesByCountry = salesByCountry.group();
@@ -39,8 +36,6 @@ function makeGraphs(error, projectsJson) {
    var totalSales = ndx.groupAll().reduceSum(function (d) {
        return d["Price"];
    });
-
-
 
    //Define values (to be used in charts)
    var minDate = dateDim.bottom(1)[0]["Transaction_date"];
@@ -51,19 +46,6 @@ function makeGraphs(error, projectsJson) {
    var salesByCountryChart = dc.pieChart("#sales-by-country");
    var totalSalesND = dc.numberDisplay("#total-sales");
 
-
-   // selectField = dc.selectMenu('#menu-select')
-   //     .dimension(stateDim)
-   //     .group(stateGroup);
-
-
-   // numberProjectsND
-   //     .formatNumber(d3.format("d"))
-   //     .valueAccessor(function (d) {
-   //         return d;
-   //     })
-   //     .group(all);
-
    totalSalesND
        .formatNumber(d3.format("d"))
        .valueAccessor(function (d) {
@@ -72,7 +54,7 @@ function makeGraphs(error, projectsJson) {
        .group(totalSales)
        .formatNumber(d3.format(".3s"));
 
- timeChart
+   timeChart
        .width(800)
        .height(200)
        .margins({top: 10, right: 50, bottom: 30, left: 50})
@@ -83,8 +65,6 @@ function makeGraphs(error, projectsJson) {
        .elasticY(true)
        .xAxisLabel("Day")
        .yAxis().ticks(5);
-
-
    salesByCountryChart
        .height(220)
        .radius(90)
@@ -92,8 +72,6 @@ function makeGraphs(error, projectsJson) {
        .transitionDuration(1500)
        .dimension(salesByCountry)
        .group(numProjectSalesByCountry);
-
-
    dc.renderAll();
 }/**
  * Created by lauri on 01/03/2017.
