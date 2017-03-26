@@ -69,6 +69,7 @@ function makeGraphs(error, projectsJson) {
        .dimension(salesByCountry)
        .group(numProjectSalesByCountry);
    dc.renderAll();
-}/**
+}
+/**
  * Created by lauri on 01/03/2017.
  */
