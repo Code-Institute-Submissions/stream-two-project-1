@@ -20,10 +20,6 @@ function makeGraphs(error, projectsJson) {
        return d["Transaction_date"];
    });
 
-   var totalSalesDim = ndx.dimension(function (d) {
-       return d["Price"];
-   });
-
    var salesByCountry = ndx.dimension(function (d) {
        return d["Country"];
    });
