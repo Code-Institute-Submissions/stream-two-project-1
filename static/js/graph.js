@@ -9,6 +9,7 @@ function makeGraphs(error, projectsJson) {
    var dateFormat = d3.time.format("%m/%e/%y %H:%M");
    transactionsJaProjects.forEach(function (d) {
        d["Transaction_date"] = dateFormat.parse(d["Transaction_date"]);
+       // d["Transaction_date"].setDate(1);
        d["Price"] = +d["Price"];
    });
 
@@ -19,17 +20,19 @@ function makeGraphs(error, projectsJson) {
    var dateDim = ndx.dimension(function (d) {
        return d["Transaction_date"];
    });
-
    var salesByCountry = ndx.dimension(function (d) {
        return d["Country"];
    });
+   var cardTypeDim = ndx.dimension(function (d) {
+       return d["Payment_Type"];
+   });
 
-   //Calculate metrics
-   var numProjectsByDate = dateDim.group();
-   var numProjectSalesByCountry = salesByCountry.group();
+       //Calculate metrics
+   var numSalesByDate = dateDim.group();
+   var numSalesByCountry = salesByCountry.group();
+   var numCardByType = cardTypeDim.group();
 
-   var all = ndx.groupAll();
-   var totalSales = ndx.groupAll().reduceSum(function (d) {
+    var totalSales = ndx.groupAll().reduceSum(function (d) {
        return d["Price"];
    });
 
@@ -41,6 +44,7 @@ function makeGraphs(error, projectsJson) {
    var timeChart = dc.barChart("#time-chart");
    var salesByCountryChart = dc.pieChart("#sales-by-country");
    var totalSalesND = dc.numberDisplay("#total-sales");
+   var cardTypeChart = dc.rowChart("#card-type-row-chart");
 
    totalSalesND
        .formatNumber(d3.format("d"))
@@ -55,19 +59,28 @@ function makeGraphs(error, projectsJson) {
        .height(200)
        .margins({top: 10, right: 50, bottom: 30, left: 50})
        .dimension(dateDim)
-       .group(numProjectsByDate)
+       .group(numSalesByDate)
        .transitionDuration(500)
        .x(d3.time.scale().domain([minDate, maxDate]))
        .elasticY(true)
        .xAxisLabel("Day")
        .yAxis().ticks(5);
+
    salesByCountryChart
        .height(220)
        .radius(90)
        .innerRadius(40)
        .transitionDuration(1500)
        .dimension(salesByCountry)
-       .group(numProjectSalesByCountry);
+       .group(numSalesByCountry);
+
+   cardTypeChart
+       .width(300)
+       .height(250)
+       .dimension(cardTypeDim)
+       .group(numCardByType)
+       .xAxis().ticks(4);
+
    dc.renderAll();
 }
 /**

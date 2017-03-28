@@ -8,48 +8,30 @@
          filename='lib/css/keen-dashboards.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
-
- </head>
+</head>
 <body class="application">
-
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
    <div class="container-fluid">
        <div class="navbar-header">
-           <a class="navbar-brand" href="../">Sales Report Dashboard</a>
+           <a class="navbar-brand" href="../">January 2009 Sales Analytics Dashboard</a>
        </div>
    </div>
 </div>
 <div  id="outer" class="container-fluid">
     <div class="row">
+        <!-- Time Chart -->
        <div class="col-sm-10">
-           <div class="row">
-               <!-- Time Chart -->
-               <div class="col-sm-12">
-                   <div class="chart-wrapper">
-                       <div class="chart-title">
-                           Number of Sales
-                       </div>
-                       <div class="chart-stage">
-                           <div id="time-chart"></div>
-                       </div>
-                   </div>
+           <div class="chart-wrapper">
+               <div class="chart-title">
+                   January 2009 Sales
                </div>
-               <!-- Time Chart -->
-               <!-- Pie Chart -->
-               <div class="col-sm-6">
-                   <div class="chart-wrapper">
-                       <div class="chart-title">
-                           Sales by country
-                       </div>
-                       <div class="chart-stage">
-                           <div id="sales-by-country"></div>
-                       </div>
-                   </div>
+               <div class="chart-stage">
+                   <div id="time-chart"></div>
                </div>
-               <!-- Pie chart -->
            </div>
        </div>
-       <!-- Metric  -->
+       <!-- Time Chart -->
+        <!-- Metric  -->
        <div class="col-sm-2">
            <div class="chart-wrapper">
                <div class="chart-title">
@@ -61,6 +43,30 @@
            </div>
        </div>
        <!-- Metric  -->
+        <!-- sales by country -->
+        <div class="col-sm-6">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Number of Sales by Country
+                </div>
+                <div class="chart-stage">
+                   <div id="sales-by-country"></div>
+               </div>
+            </div>
+        </div>
+        <!-- sales by country -->
+        <!--card type -->
+        <div class="col-sm-6">
+           <div class="chart-wrapper">
+               <div class="chart-title">
+                  Number of Sales by Card Type
+               </div>
+               <div class="chart-stage">
+                   <div id="card-type-row-chart" data-position="left"></div>
+               </div>
+           </div>
+       </div>
+        <!--card type -->
    </div>
 </div>
 
@@ -70,7 +76,6 @@
 <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
 <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
 <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
-
 <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
 <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
 </body>

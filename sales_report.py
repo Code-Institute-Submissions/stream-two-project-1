@@ -29,7 +29,7 @@ def sales_report_projects():
     # A constant that defines the record fields that we wish to retrieve.
     FIELDS = {
         '_id': False, 'Transaction_date': True, 'Price': True,
-        'Country': True
+        'Country': True, 'Payment_Type':True
     }
 
     # Open a connection to MongoDB using a with statement such that the
