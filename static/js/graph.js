@@ -9,7 +9,7 @@ function makeGraphs(error, projectsJson) {
    var dateFormat = d3.time.format("%m/%e/%y %H:%M");
    transactionsJaProjects.forEach(function (d) {
        d["Transaction_date"] = dateFormat.parse(d["Transaction_date"]);
-       // d["Transaction_date"].setDate(1);
+       d["Transaction_date"].setDate(1);
        d["Price"] = +d["Price"];
    });
 
@@ -67,7 +67,7 @@ function makeGraphs(error, projectsJson) {
        .yAxis().ticks(5);
 
    salesByCountryChart
-       .height(220)
+       .height(250)
        .radius(90)
        .innerRadius(40)
        .transitionDuration(1500)

@@ -1,0 +1,21 @@
+.dc-chart .pie-slice {
+   fill: black;
+}
+#total-sales {
+   background: #333;
+   width: 200px;
+   position: relative;
+   height: 60px;
+   font-size: 29px;
+   color: white;
+   vertical-align: middle;
+   text-align: center;
+   padding-top: 12px;
+   padding-bottom: 0px;
+}
+.chart-wrapper .chart-title {
+   background-color: black;
+   color: white;
+   text-align: center;
+}
+
