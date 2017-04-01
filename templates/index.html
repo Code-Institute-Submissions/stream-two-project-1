@@ -2,13 +2,14 @@
 <html>
 <head>
    <title>Sales Report Dashboard</title>
-   <link rel="stylesheet" href="{{ url_for ('static',
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for ('static',
          filename='lib/css/bootstrap.min.css')}}">
-   <link rel="stylesheet" href="{{ url_for ('static',
+    <link rel="stylesheet" href="{{ url_for ('static',
          filename='lib/css/keen-dashboards.css')}}">
-   <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
-   <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
-   <link rel="stylesheet" href="static/css/introjs.css"/>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
+    <link rel="stylesheet" href="static/css/introjs.css"/>
 </head>
 <body class="application">
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -21,6 +22,10 @@
 </div>
 
 <div  id="outer" class="container-fluid">
+    <div class="col-sm-12" id="description">
+        <h3>Monthly Sales Report</h3>
+        <p>Issued by: <strong>Precision Industries Co., Ltd.</strong><br>Issued on: Feb 2, 2009<br><strong>Precision Industries Co., Ltd.</strong> today announced sales revenue for Jan 2009: on a consolidated basis, sales revenue was <strong>US$ 1.63 million</strong>, representing 5.9% sequential decline over Dec 2008. On a year-over-year basis , sales revenue for Jan 2009 increased 16.2%. Use the <strong>interactive charts</strong> below to visualize the value of the sales from a certain period of the month, the number of sales in each Country or the type of credit card used for payment.</p>
+    </div>
     <div class="row">
         <!-- Time Chart -->
        <div class="col-sm-10">
