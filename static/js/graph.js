@@ -6,18 +6,17 @@ function makeGraphs(error, projectsJson) {
 
    //Clean projectsJson data
    var transactionsJaProjects = projectsJson;
-   var dateFormat = d3.time.format("%m/%e/%y %H:%M");
-   transactionsJaProjects.forEach(function (d) {
-       d["Transaction_date"] = dateFormat.parse(d["Transaction_date"]);
-       d["Transaction_date"].setDate(1);
-       d["Price"] = +d["Price"];
+  transactionsJaProjects.forEach(function (d) {
+      var dayOnly = d["Transaction_date"].split(" ")[0];
+      d["Transaction_date"] = d3.time.format("%m/%d/%y").parse(dayOnly);
+      d["Price"] = +d["Price"];
    });
 
-    //Create a Crossfilter instance
+  //Create a Crossfilter instance
    var ndx = crossfilter(transactionsJaProjects);
 
     //Define Dimensions
-   var dateDim = ndx.dimension(function (d) {
+    var dateDim = ndx.dimension(function (d) {
        return d["Transaction_date"];
    });
    var salesByCountry = ndx.dimension(function (d) {
@@ -27,7 +26,7 @@ function makeGraphs(error, projectsJson) {
        return d["Payment_Type"];
    });
 
-       //Calculate metrics
+    //Calculate metrics
    var numSalesByDate = dateDim.group();
    var numSalesByCountry = salesByCountry.group();
    var numCardByType = cardTypeDim.group();
@@ -62,6 +61,7 @@ function makeGraphs(error, projectsJson) {
        .group(numSalesByDate)
        .transitionDuration(500)
        .x(d3.time.scale().domain([minDate, maxDate]))
+       .xUnits(function(){return 35;}) // a few more than the num of days in month
        .elasticY(true)
        .xAxisLabel("Day")
        .yAxis().ticks(5);
