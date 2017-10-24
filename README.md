@@ -1,5 +1,5 @@
 # stream-two-project
-### The app displays a sales transactions report for January  for sample company.
+### The app displays a sales transactions report for January  for Precision Industries Co., Ltd company.
 ### It displays a dashboard on a single interactive page and will have:
     * one bar chart to display the sales by day
     * one pie chart to display the number of sales by country

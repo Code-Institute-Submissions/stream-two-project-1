@@ -3,10 +3,8 @@
 <head>
    <title>Sales Report Dashboard</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for ('static',
-         filename='lib/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for ('static',
-         filename='lib/css/keen-dashboards.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
     <link rel="stylesheet" href="static/css/introjs.css"/>
@@ -15,12 +13,11 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
    <div class="container-fluid">
        <div class="navbar-header">
-           <a class="navbar-brand" href="../">January 2009 Sales Analytics Dashboard</a>
+           <a class="navbar-brand" href="../">Precision Industries Co., Ltd January 2009 Sales Analytics Dashboard</a>
        </div>
        <button class="btn btn-info navbar-btn intro_button" autofocus onclick="javascript:introJs().start();">Start Tour</button>
    </div>
 </div>
-
 <div  id="outer" class="container-fluid">
     <div class="col-sm-12" id="description">
         <h3>Monthly Sales Report</h3>
@@ -77,7 +74,6 @@
         <!--card type -->
    </div>
 </div>
-
 <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
 <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
 <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
