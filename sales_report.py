@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://root:lord1179@ds229295.mlab.com:29295/heroku_q5vzc79z')
+MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'transactionsJan')
 COLLECTION_NAME = 'projects'
 
